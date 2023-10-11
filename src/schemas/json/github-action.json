@@ -79,7 +79,8 @@
               "run": {
                 "$comment": "https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runsstepsrun",
                 "description": "The command you want to run. This can be inline or a script in your action repository.",
-                "type": "string"
+                "type": "string",
+                "x-intellij-language-injection": "Shell Script"
               },
               "shell": {
                 "$comment": "https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runsstepsshell",
@@ -159,32 +160,6 @@
               },
               {
                 "required": ["uses"]
-              }
-            ],
-            "allOf": [
-              {
-                "if": {
-                  "properties": { "shell": { "enum": ["bash", "sh"] } }
-                },
-                "then": {
-                  "properties": { "run": { "x-intellij-language-injection": "Shell Script" } }
-                }
-              },
-              {
-                "if": {
-                  "properties": { "shell": { "const": "python" } }
-                },
-                "then": {
-                  "properties": { "run": { "x-intellij-language-injection": "Python" } }
-                }
-              },
-              {
-                "if": {
-                  "properties": { "shell": { "enum": ["cmd", "pwsh", "powershell"] } }
-                },
-                "then": {
-                  "properties": { "run": { "x-intellij-language-injection": "Powershell" } }
-                }
               }
             ],
             "additionalProperties": false
