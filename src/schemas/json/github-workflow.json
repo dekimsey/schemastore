@@ -870,6 +870,32 @@
                     ]
                   }
                 },
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": { "shell": { "enum": ["bash", "sh"] } }
+                    },
+                    "then": {
+                      "properties": { "run": { "x-intellij-language-injection": "Shell Script" } }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": { "shell": { "const": "python" } }
+                    },
+                    "then": {
+                      "properties": { "run": { "x-intellij-language-injection": "Python" } }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": { "shell": { "enum": ["cmd", "pwsh", "powershell"] } }
+                    },
+                    "then": {
+                      "properties": { "run": { "x-intellij-language-injection": "Powershell" } }
+                    }
+                  }
+                ],
                 "dependencies": {
                   "working-directory": ["run"],
                   "shell": ["run"]
